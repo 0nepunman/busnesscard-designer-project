@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Business Card Designer</title>
+</head>
+<body>
+    <nav class="navbar text-light justify-content-center">
+        <h4 class="text-uppercase mb-brand">Business Card <span class="mb-brand-end">Designer</span></h4>
+    </nav>
+
+    <div class="row no-gutters mt-3">
+        <div class="d-flex flex-column col-lg-6">
+            <div class="d-flex justify-content-between mb-3 mx-5">
+                <!-- <button class="btn btn-warning" type="button" onclick="reset()">Reset</button>
+                <button class="btn btn-dark" type="button" onclick="refresh()">Refresh</button>
+                <button class="btn btn-success" type="button" onclick="done()">Done</button> -->
+            </div>
+            <div id="business-card" class="d-flex flex-column card mt-3 mx-5 p-3">
+                <h4 id="company">Your Company</h4>
+                <h6 id="message">Company Message</h6>
+                <hr>
+                <p id="name">Your Name</p>
+                <p id="title">Job Title</p>
+                <p id="emailadd">Email</p>
+                <p id="tel">Telephone No.</p>
+            </div> <!-- End of Business Card -->
+            <div class="d-flex flex-column mx-4 mt-4">
+                <div class="d-flex mb-3 mt-1">
+                    <label for="align-options" class="input-group-text mx-2 mb-style-labels">Formatting</label>
+                    <div id="align-options" class="input-group">
+                        <button class="btn btn-primary mx-1 mb-formatbtn" type="button" onclick="leftAlign()">Left</button>
+                        <button class="btn btn-primary mx-1 mb-formatbtn" type="button" onclick="centerAlign()">Center</button>
+                        <button class="btn btn-primary mx-1 mb-formatbtn" type="button" onclick="rightAlign()">Right</button>
+                        <button class="btn btn-primary mx-1" type="button" onclick="boldText()"><strong>B</strong></button>
+                        <button class="btn btn-primary mx-1 font-italic" type="button" onclick="italicText()">I</button>
+                        <button class="btn btn-primary mx-1 mb-underline" type="button" onclick="underlineText()">U</button>
+                    </div>
+                </div><!-- End of Align Options -->
+                <div class="d-flex mb-3 mt-1">
+                    <label for="font-styleselect" class="input-group-text mx-2 mb-style-labels">Font Style</label>
+                        <select name="" id="font-styleselect" class="custom-select mb-select">
+                            <!-- ORIGINAL: -->
+                        <!-- <select name="" id="font-styleselect" class="custom-select mb-select" onchange="styleSelect(this)">  -->
+                            <option >Choose...</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="fantasy">Papyrus</option>
+                            <option value="Comic Sans MS">Comic Sans</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Cursive">Handwriting</option>
+                        </select>
+                </div><!-- End of Font Style Options -->
+                <div class="d-flex mb-3 mt-1">
+                    <label for="color-options" class="input-group-text mx-2 mb-style-labels">Color</label>
+                    <div id="color-options" class="input-group">
+                        <label for="body-picker" class="input-group-text text-light ml-1 mb-color-label">Body</label>
+                        <div class="color-preset-container">
+                            <button class="btn btn-primary mb-btn-circle my-1 ml-1" type="button" onclick="blue()"></button>
+                            <button class="btn btn-warning mb-btn-circle my-1" type="button" onclick="yellow()"></button>
+                            <button class="btn btn-danger mb-btn-circle my-1" type="button" onclick="red()"></button>
+                            <button class="btn btn-info mb-btn-circle my-1 mr-1" type="button" onclick="cyan()"></button>
+                        </div>
+                        <div class="colorpicker-wrapper">
+                            <div class="colorpicker-container m-1">
+                            	<input id="color-picker" class="input-color" name="green" value="#28a745" type="color">
+                            </div>
+                        </div>
+                        <label for="body-picker" class="input-group-text text-light ml-2 mb-color-label">Text</label>
+                        <div class="text-preset-container">
+                        	<button class="btn btn-light border-dark mb-btn-circle my-1 ml-1" type="button" onclick="lightText()"></button>
+                        	<button class="btn btn-dark mb-btn-circle my-1" type="button" onclick="darkText()"></button>
+                        	<button class="btn mb-bg-gold mb-btn-circle my-1 mr-1" type="button" onclick="goldText()"></button>
+                        </div>
+                        <div class="colorpicker-wrapper">
+                            <div class="colorpicker-container m-1">
+                            	<input id="text-color-picker" class="input-color" name="indigo" value="#6610f2" type="color">
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End of Color Options -->
+            </div>
+        </div><!-- End of Left Col -->
+
+        <div class="d-flex flex-column col-lg-6 mt-5">
+            <div class="input-group mb-3">
+                <label for="company-name" class="input-group-text mx-2 mb-style-labels">Company Name</label>
+                <input type="text" id="companyInput" class="form-control mr-5" onkeyup="companyName()">
+            </div>
+            <div class="input-group mb-3">
+                <label for="company-name" class="input-group-text mx-2 mb-style-labels">Company Message</label>
+                <textarea name="Company Message" id="messageInput" class="form-control mr-5" rows="5" onkeyup="companyMessage()"></textarea>
+            </div>
+            <div class="input-group mb-3">
+                <label for="company-name" class="input-group-text mx-2 mb-style-labels">Your Name</label>
+                <input type="text" id="nameInput" class="form-control mr-5" onkeyup="yourName()">
+            </div>
+            <div class="input-group mb-3">
+                <label for="company-name" class="input-group-text mx-2 mb-style-labels">Job Title</label>
+                <input type="text" id="titleInput" class="form-control mr-5" onkeyup="jobTitle()">
+            </div>
+            <div class="input-group mb-3">
+                <label for="company-name" class="input-group-text mx-2 mb-style-labels">Email</label>
+                <input type="text" id="emailInput" class="form-control mr-5" onkeyup="emailAdd()">
+            </div>
+            <div class="input-group mb-3">
+                <label for="company-name" class="input-group-text mx-2 mb-style-labels">Telephone No.</label>
+                <input type="text" id="telInput" class="form-control mr-5" onkeyup="telNo()">
+            </div>
+            <div class="d-flex justify-content-end mb-3 mx-5">
+                <button class="btn btn-warning mx-1 mb-finish" type="button" onclick="reset()">Reset</button>
+                <button class="btn btn-dark mx-1 mb-finish" type="button" onclick="refresh()">Refresh</button>
+                <button class="btn btn-success mx-1 mb-finish" type="button" onclick="done()">Done</button>
+            </div>
+        </div>
+    </div> <!-- End of main container -->
+    
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="javascript.js"></script>
+</body>
+</html>
